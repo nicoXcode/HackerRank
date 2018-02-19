@@ -1,0 +1,48 @@
+package exercise;
+import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class JavaDateAndTime 
+{
+	    public static String getDay(String day, String month, String year) 
+	    {
+	    	String errore = "Respect the constraint. Parameter 'year' must be major of 2000 but minor of 3000";
+	    	int compYear = Integer.parseInt(year);
+	    	
+	    	//Transform string year into int and compare to in order to respect constraint
+	    	if (compYear < 2000)
+	    	return errore;
+	    	else if (compYear > 3000)
+	    		return errore;
+	    	else; 
+	    	
+	    	SimpleDateFormat formatoInput = new SimpleDateFormat("dd/MM/yyyy");
+	    	Date data = null;
+	    	try {
+				data = formatoInput.parse(day+"/"+month+"/"+year);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	
+	    	SimpleDateFormat formatoOutput = new SimpleDateFormat("EEEE");
+	    	String weekDay = null;
+	    	weekDay = formatoOutput.format(data);
+
+	    	return(weekDay.toUpperCase());
+	        
+	    }
+
+
+	    public static void main(String[] args) 
+	    {
+	        Scanner in = new Scanner(System.in);
+	        String month = in.next();
+	        String day = in.next();
+	        String year = in.next();
+	        in.close();
+	        System.out.println(getDay(day, month, year));
+	    }
+}
