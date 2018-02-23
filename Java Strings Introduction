@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub        
+		
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        String B=sc.next();
+        int totLen = A.length() + B.length();       
+        
+        int iA = 0;
+        int iB = 0;
+        
+        System.out.println(totLen);
+		
+        try  
+      {
+        for(;Character.toLowerCase(A.charAt(iA)) == Character.toLowerCase(B.charAt(iB));)
+		{
+			iA++;
+			iB++;
+		}
+        
+        if (Character.toLowerCase(A.charAt(iA)) > Character.toLowerCase(B.charAt(iB)))
+		{
+			System.out.println("Yes");
+		}
+        else
+        {
+        	System.out.println("No");
+        }
+      }
+        catch (StringIndexOutOfBoundsException e1)
+        {
+        	System.out.println("No");
+        }
+        
+        
+        System.out.print(A.substring(0, 1).toUpperCase() + A.substring(1));
+        System.out.print(" " + B.substring(0, 1).toUpperCase() + B.substring(1));
+		
+	}
+}
