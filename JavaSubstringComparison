@@ -1,0 +1,98 @@
+//RUN IN JAVA 8 FOR LAMBDA EXPRESSION//
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class JavaSubstringComparison
+{
+    private static String getSmallestAndLargest(String s, int i)
+    {
+
+        //Variables//
+
+        String largest = s.substring(0,i);
+        String smallest= s.substring(0,i);
+        String[] inputList = new String[(s.length()-i)+1];
+
+
+        //Lambda expression to check if the input String have all elements equal to letter//
+        boolean allLetters = s.chars().allMatch(Character::isLetter);
+
+        if (0 <= s.length() && s.length() <= 1000 && allLetters)  ////OK/////
+        {
+            int z = i;
+            for (int k = 0; k < inputList.length; k++)
+            {
+
+                inputList[k] = s.substring(k,z);
+                System.out.print(inputList[k]+" ");
+                z++;
+            }
+
+
+
+            for (int ki = 0; ki < (inputList.length); ki++)
+            {
+
+                if(inputList[ki] == largest && inputList[ki] == smallest)
+                {
+                    //do nothing
+                }
+                else if (inputList[ki].compareTo(largest) > 0)
+                {
+                    largest = inputList[ki];
+                }
+
+                if (inputList[ki].compareTo(smallest) < 0)
+                {
+                    smallest = inputList[ki];
+                }
+
+            }
+
+        }
+
+        return ('\n' + smallest + '\n' + largest);
+    }
+
+    public static void main(String[] args)
+    {
+
+        Scanner scan = new Scanner(System.in);
+        String s = scan.next();
+        int k = scan.nextInt();
+        scan.close();
+
+        System.out.println(getSmallestAndLargest(s, k));
+
+    }
+}
+
+
+
+
+//  THIS SOLUTION USE THE FUNCTION SORT//
+/*
+    public static String getSmallestAndLargestArray(String s, int k) {
+        // Because each substring has length 'k', we know the number of possible substrings
+        String[] substrings = new String[s.length() - k + 1];
+
+        for (int i = 0; i <= s.length() - k; i++) {
+            // Add a substring of length 'k' to our array
+            substrings[i] =  s.substring(i, i + k);
+        }
+
+        // Sort array
+        Arrays.sort(substrings);
+
+        // Set first and last elements as smallest and largest
+        String smallest = substrings[0];
+        String largest = substrings[substrings.length - 1];
+
+        return smallest + "\n" + largest;
+    }
+
+*/
