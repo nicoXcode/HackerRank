@@ -1,0 +1,52 @@
+import java.util.*;
+
+public class CasiniRandom
+{
+    public static boolean isAnagram(String a, String b)
+    {
+
+        //Variables//
+        String anagrams = "Anagrams";
+        String notAanagrams = "NotAnagrams";
+        char[] arrayA = new char[a.length()];
+        char[] arrayB = new char[b.length()];
+        boolean flag = true;
+
+        //Lambda expression to check if the input String have all elements equal to letter//
+        boolean allLettersA = a.chars().allMatch(Character::isLetter);
+        boolean allLettersB = b.chars().allMatch(Character::isLetter);
+
+        if (1 <= a.length() && a.length() <= 50 && allLettersA && allLettersB && 1 <= b.length() && b.length() <= 50)  ////OK/////
+        {
+
+            //Convert string into array with Method toCharArray//
+            arrayA = a.toCharArray();
+            arrayB = b.toCharArray();
+
+            //Sort lexicographical order of array char//
+            Arrays.sort(arrayA);
+            Arrays.sort(arrayB);
+
+            //To check if the two arrays are equals after sorted, is possible to use the method Arrays.equals like showed below//
+            if(Arrays.equals(arrayA, arrayB))
+            {
+                flag = true;
+            }
+            else
+            {
+                flag = false;
+            }
+        }
+        return flag;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
