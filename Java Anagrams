@@ -1,13 +1,11 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
-public class CasiniRandom
+public class Solution
 {
     public static boolean isAnagram(String a, String b)
     {
-
         //Variables//
-        String anagrams = "Anagrams";
-        String notAanagrams = "NotAnagrams";
         char[] arrayA = new char[a.length()];
         char[] arrayB = new char[b.length()];
         boolean flag = true;
@@ -18,14 +16,24 @@ public class CasiniRandom
 
         if (1 <= a.length() && a.length() <= 50 && allLettersA && allLettersB && 1 <= b.length() && b.length() <= 50)  ////OK/////
         {
-
+        
+            //Set toLowerCase the input String//
+            a = a.toLowerCase();
+            b = b.toLowerCase();
+            
             //Convert string into array with Method toCharArray//
             arrayA = a.toCharArray();
             arrayB = b.toCharArray();
 
+            System.out.println(arrayA);
+            System.out.println(arrayB);
+
             //Sort lexicographical order of array char//
             Arrays.sort(arrayA);
             Arrays.sort(arrayB);
+
+            System.out.println(arrayA);
+            System.out.println(arrayB);
 
             //To check if the two arrays are equals after sorted, is possible to use the method Arrays.equals like showed below//
             if(Arrays.equals(arrayA, arrayB))
