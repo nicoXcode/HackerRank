@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args)
+    {
+        Scanner scan = new Scanner(System.in);
+        String str = scan.nextLine();
+        // Write your code here.
+        scan.close();
+        boolean flag = false;
+        int nullElement = 0;
+
+        if (str.length() > 1 && str.length() <= 400000)
+        {
+
+            if (str.matches("[A-Za-z !,?._'@' ']+"))
+                flag = true;
+
+            if (flag)
+            {
+                //String strTrim = str.replaceAll(" ", "");
+                String[] strSplitted = str.trim().split("\\s+|'|\\?|,|!|\\.|_|@" , 0);
+
+                //Calculate empty element in the array strSplitted//
+                for (int i = 0; i < strSplitted.length; i++)
+                {
+                    if (strSplitted[i].isEmpty())
+                    {
+                        nullElement++;
+                    }
+                }
+
+                System.out.println(strSplitted.length - nullability);
+
+                for (int i = 0; i < strSplitted.length; i++)
+                {
+                    if (!strSplitted[i].isEmpty())
+                    {
+                        System.out.println(strSplitted[i]);
+                    }
+                }
+            }
+        }
+    }
+
+}
