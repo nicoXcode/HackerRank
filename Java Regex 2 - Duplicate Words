@@ -1,0 +1,43 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Scanner;
+
+public class CasiniRandom{
+        public static void main(String[] args) {
+
+            String regex = "\\b(\\w+)(\\W+\\1\\b)*";
+            /*la regex la possiamo spiegare così:
+            b serve ad impostare il confine della parola, quindi tra 'b' inseriamo la parte atomica che vogliamo identificare
+            w significa, aspettati in input tutti valori compresi in questo range [a-z A-Z 0-9]
+            s whitespace character
+            1 gli diciamo di catturare la regex ogni qual volta si presenti e non solo una volta: vedere esempio qui
+            https://stackoverflow.com/questions/38705002/the-meaning-of-1-operator-in-java-regexes
+             */
+            final int flags = Pattern.CASE_INSENSITIVE | Pattern.CANON_EQ | Pattern.UNICODE_CASE;
+            Pattern p = Pattern.compile(regex, flags);
+
+
+            Scanner in = new Scanner(System.in);
+            int numSentences = Integer.parseInt(in.nextLine());
+            if (numSentences >=1 && numSentences <= 100) {
+
+                while (numSentences-- > 0) {
+                    String input = in.nextLine();
+
+                    if (input.length() >= 1 && input.length() <= 10000) {
+
+                        Matcher m = p.matcher(input);
+
+                        // Check for subsequences of input that match the compiled pattern
+                        while (m.find()) {
+                            input = input.replaceAll(m.group(), m.group(1));
+                        }
+
+                        // Prints the modified sentence.
+                        System.out.println(input);
+                    }
+                }
+            }
+            in.close();
+        }
+    }
