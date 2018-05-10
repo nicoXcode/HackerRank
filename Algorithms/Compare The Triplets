@@ -1,0 +1,64 @@
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class CasiniRandom
+{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        int[] a = new int [3];
+        int[] b = new int [3];
+        int aScores = 0;
+        int bScores = 0;
+        boolean flag = true;
+
+        //Loop to fill first array//
+        for(int i = 0; i < a.length; i++)
+        {
+            int inptuArrayA = scanner.nextInt();
+            a[i] = inptuArrayA;
+
+        }
+
+        //Loop to fill second array//
+        for(int i = 0; i < b.length; i++)
+        {
+            int inptuArrayB = scanner.nextInt();
+            b[i] = inptuArrayB;
+        }
+        scanner.close();
+
+        //Loop to controll arrays elements//
+            for (int i = 0; i < a.length; i++)
+            {
+                if (a[i] < 1 || a[i] > 100 || b[i] < 1 || b[i] > 100) {
+                    //SETTING FLAG VARIABLE EQUAL TO FALSE IF ALSO ONE ELEMENT NOT RESPECT IF CONDITION
+                    flag = false;
+                }
+            }
+
+        if (flag == true)
+        {
+            for (int i = 0; i < a.length; i++)
+            {
+                if (a[i] > b[i]) {
+                    aScores++;
+                }
+                if (a[i] < b[i]) {
+                    bScores++;
+                }
+            }
+            System.out.print(aScores + " " + bScores);
+        }
+        else
+        {
+
+        }
+
+
+    }
+}
