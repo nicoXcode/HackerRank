@@ -1,0 +1,38 @@
+package exercise;
+
+import java.util.*;
+
+public class WhiteWall
+	{
+		public static void main(String[] args)
+			{
+
+				Scanner scanner = new Scanner(System.in);
+				final int n = scanner.nextInt();
+				boolean flag = true;
+				int i = 0;
+				double pow = Math.pow(10, 10);
+
+				if (n >= 1 && n <= 10)
+					{
+						long[] arr = new long[n];
+						long sum = 0;
+							{
+								while (flag == true && i < n)
+									{
+										long element = scanner.nextLong();
+										if (element >= 0 && element <= pow)
+											{
+												arr[i] = element;
+												sum = arr[i] + sum;
+												i++;
+											} else
+											{
+												flag = false;
+											}
+									}
+							}
+						scanner.close();
+					}
+			}
+	}
